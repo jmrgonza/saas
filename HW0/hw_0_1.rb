@@ -5,29 +5,24 @@ def sum(lista)
 end
 
 def max_2_sum(lista)
-  l = lista.length
-  a = l>0 ? lista[0] : 0
-  b = l>1 ? lista[1] : 0
-
-  if (b>a)
-    c = b
-    b = a
-    a = c
-  end
-  
-  lista.each  do |elem|
-    if (elem>b)
-      b = elem
+  n = lista.length
+  if (n==0)
+    return 0
+  elsif (n==1)
+    return lista[0]
+  elsif (n>1)
+    aux = lista.dup
+    second, top = aux.slice!(0,2).sort!
+    aux.each do |elem|
+      if (elem>top)
+        second = top
+        top = elem
+      elsif (elem>second)
+        second = elem
+      end
     end
-    if (b>a)
-      c = b
-      b = a
-      a = c
-    end
-  end
-
-  a + b
-
+    return second + top
+  end 
 end
 
 def sum_to_n?(lista, target)
