@@ -27,4 +27,24 @@ end
 
 def sum_to_n?(lista, target)
   
+  if lista.length==0
+    return (target==0)
+  elsif lista.length==1
+    return (target==lista[0])
+  else
+    a = lista.dup
+    b = Array.new
+    
+    while a.length > 0
+      x = a.slice!(0)
+      b.each do |y|
+        if x+y==target
+          return true
+        end
+      end
+      b << x
+    end
+    return false
+  end
+  
 end

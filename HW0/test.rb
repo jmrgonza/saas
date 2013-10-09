@@ -28,5 +28,16 @@ class TestHW < Test::Unit::TestCase
     assert_equal(4, max_2_sum([-11,-2,3,1]))
     assert_equal(1, max_2_sum([0,0,1]))
   end
+  
+  def test_sum_2_n
+    assert(sum_to_n?([1,2,3,4],7))
+    assert(sum_to_n?([1,2,3,4],6))
+    assert(!sum_to_n?([1,2,3,4],8))
+    assert(sum_to_n?([],0))
+    assert(!sum_to_n?([],1))
+    assert(sum_to_n?([3],3))
+    assert(!sum_to_n?([4],3))
+  end
+
 end
 
