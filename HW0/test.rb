@@ -1,5 +1,6 @@
 require "test/unit"
 require "hw_0_1.rb"
+require "hw_0_2.rb"
 
 class TestHW < Test::Unit::TestCase
   def test_sum
@@ -39,5 +40,8 @@ class TestHW < Test::Unit::TestCase
     assert(!sum_to_n?([4],3))
   end
 
+  def test_hello
+    assert_equal("Hello,Tom", hello("Tom"))
+  end
 end
 
