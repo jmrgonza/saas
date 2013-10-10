@@ -10,3 +10,31 @@
 # with a leading dollar sign and trailing zeros, that is, a price of 20
 # should display as "$20.00" and a price of 33.8 should display as "$33.80".
 
+class BookInStock
+  def initialize(isbn, price)
+    raise ArgumentError, "No ISBN present" if isbn.empty?
+    raise ArgumentError, "Invalid price" if price <= 0
+    @isbn = isbn
+    @price = price
+  end
+  
+  def isbn
+    @isbn
+  end
+  
+  def isbn=(isbn)
+    @isbn = isbn
+  end
+  
+  def price
+    @price
+  end
+  
+  def price=(price)
+    @price = price
+  end
+  
+  def price_as_string
+    "$%0.2f" % [@price]
+  end
+end
