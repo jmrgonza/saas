@@ -41,11 +41,11 @@ class TestHW < Test::Unit::TestCase
   end
 
   def test_hello
-    assert_equal("Hello,Tom", hello("Tom"))
+    assert_equal("Hello, Tom", hello("Tom"))
   end
   
   def test_binary_multiple_of_4?
-    assert(binary_multiple_of_4?('0'))
+    assert_equal(false, binary_multiple_of_4?('0'))
     assert(binary_multiple_of_4?('00'))
     assert(binary_multiple_of_4?('000'))
     assert(binary_multiple_of_4?('0000'))
