@@ -43,5 +43,31 @@ class TestHW < Test::Unit::TestCase
   def test_hello
     assert_equal("Hello,Tom", hello("Tom"))
   end
+  
+  def test_binary_multiple_of_4?
+    assert(binary_multiple_of_4?('0'))
+    assert(binary_multiple_of_4?('00'))
+    assert(binary_multiple_of_4?('000'))
+    assert(binary_multiple_of_4?('0000'))
+    assert(binary_multiple_of_4?('100'))
+    assert(binary_multiple_of_4?('1000'))
+    assert(binary_multiple_of_4?('10000'))
+    assert(binary_multiple_of_4?('1100'))
+    assert(binary_multiple_of_4?('11000'))
+    assert(binary_multiple_of_4?('110000'))
+    assert(binary_multiple_of_4?('10100'))
+    assert(binary_multiple_of_4?('110100'))
+    assert(binary_multiple_of_4?('1100100'))
+    assert_equal(false, binary_multiple_of_4?('11001010'))
+    assert_equal(false, binary_multiple_of_4?('110010101'))
+    assert_equal(false, binary_multiple_of_4?('1'))
+    assert_equal(false, binary_multiple_of_4?('01'))
+    assert_equal(false, binary_multiple_of_4?('001'))
+    assert_equal(false, binary_multiple_of_4?('101'))
+    assert_equal(false, binary_multiple_of_4?('a1'))
+    assert_equal(false, binary_multiple_of_4?('a00'))
+
+
+  end
 end
 
