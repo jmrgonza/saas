@@ -5,11 +5,22 @@ module FunWithStrings
   end
   def count_words
     counter = Hash.new(0)
-    self.gsub(/\W/," ").split().each{ |word| counter[word.downcase]+=1 }
+    self.gsub(/\W/," ").strip().split(/\s+/).each{ |word| counter[word.downcase]+=1 }
     counter
   end
   def anagram_groups
-    # your code here
+    groups = Hash.new(0)
+    self.strip().split(/\s+/).each do |word|
+      s = word.downcase.chars.sort.join.to_sym
+      if groups.has_key?(s)
+        if !groups[s].include?(word)
+          groups[s] = groups[s] << word
+        end
+      else
+        groups[s] = [word]
+      end
+    end
+    groups.values
   end
 end
 
