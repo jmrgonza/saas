@@ -7,7 +7,10 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all
+    @movies = Movie.all :order => params[:order]
+    @all_ratings = Movie.ratings
+    @class = Hash.new("")
+    @class[params[:order]] = "hilite"
   end
 
   def new
