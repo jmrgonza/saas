@@ -7,8 +7,23 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all :order => params[:order]
-    @all_ratings = Movie.ratings
+    
+    if params[:ratings]
+      session[:ratings] = params[:ratings]
+    else
+      params[:ratings] = session[:ratings]
+    end
+    params[:order] ||= session[:order]
+    session[:order] = params[:order]
+
+    
+    if params[:ratings]
+      @all_ratings = Hash[Movie.ratings.collect { |v| [v, params[:ratings].has_key?(v)] }]
+      @movies = Movie.find :all, :conditions =>["rating IN (?)", params[:ratings].keys], :order => params[:order]
+    else
+      @all_ratings = Hash[Movie.ratings.collect { |v| [v, true] }]
+      @movies = Movie.all :order => params[:order]
+    end
     @class = Hash.new("")
     @class[params[:order]] = "hilite"
   end
